@@ -1,15 +1,22 @@
 {
   "manifest_version": 2,
   "name": "iliasLogin",
-  "version": "1.2",
+  "version": "1.3",
   "description": "Clicks through the ilias login pages automatically",
   "icons": {
     "48": "icons/48pxIliasLogo.png"
   },
   "content_scripts": [
     {
-      "matches": ["*://*.ilias.studium.kit.edu/login*", "*://*.idp.scc.kit.edu/idp/profile*", "*://*.campus.studium.kit.edu/*"],
-      "js": ["iliasLogin.js"]
+      "matches": [
+        "*://*.ilias.studium.kit.edu/login*",
+        "*://*.idp.scc.kit.edu/idp/profile*",
+        "*://*.campus.studium.kit.edu/*",
+        "*://*.ilias.studium.kit.edu/ilias.php*"
+      ],
+      "js": [
+        "iliasLogin.js"
+      ]
     }
   ]
 }
