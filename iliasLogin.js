@@ -1,3 +1,5 @@
+/// script to go through the ilias pages
+
 if (window.location.href.indexOf("ilias.studium.kit.edu/login") > -1) {
   clickButtonById('f807');
 } else if (window.location.href.indexOf("idp.scc.kit.edu") > -1) {
@@ -14,5 +16,5 @@ function clickButtonById(id) {
 }
 
 function clickButtonByClass(className) {
-  document.getElementsByClassName("shib-login")[0].click();
+  document.getElementsByClassName(className)[0].click();
 }
