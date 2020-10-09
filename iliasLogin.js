@@ -21,6 +21,8 @@ function clickButtonById(id) {
 
 function clickButtonByClass(className) {
   console.log("clickButtonByClass is called with className = " + className);
-  document.getElementsByClassName(className)[0].click();
+  var shibButton = document.getElementsByClassName(className)[0];
+  console.log("button about to be clicked: " + shibButton);
+  shibButton.click();
   console.log("button clicked");
 }
