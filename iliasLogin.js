@@ -5,7 +5,7 @@ if (window.location.href.indexOf("ilias.studium.kit.edu/login") > -1) {
   clickButtonById('f807');
 } else if (window.location.href.indexOf("campus.studium.kit.edu") > -1) {
   console.log("URL detected");
-  clickButtonByClass('shib-login shib-button');
+  setTimeout(function(){clickButtonByClass('shib-login shib-button');}, 100);
 } else if (window.location.href.indexOf("idp.scc.kit.edu") > -1) {
   clickButtonById('sbmt');
 } else if (window.location.href.indexOf("ilias.studium.kit.edu/ilias.php?baseClass=ilrepositorygui") > -1) {
@@ -21,6 +21,7 @@ function clickButtonById(id) {
 
 function clickButtonByClass(className) {
   console.log("clickButtonByClass is called with className = " + className);
+  console.log("document state: " + document.readyState);
   var shibButton = document.getElementsByClassName(className)[0];
   console.log("button about to be clicked: " + shibButton);
   shibButton.click();
