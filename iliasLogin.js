@@ -11,7 +11,7 @@ if (window.location.href.indexOf("ilias.studium.kit.edu/login") > -1) {
   // Before clicking on submit, we will use a trick and click on some text beforehand.
   clickButtonByClass('text full', 1); // only text, not an actual button. Index = 1 because with Index = 0 is a class with a button in it which we do not want to click on
   clickButtonById('sbmt'); // the actual button
-} else if (window.location.href.indexOf("ilias.studium.kit.edu/ilias.php?baseClass=ilrepositorygui") > -1) {
+} else if ((window.location.href.indexOf("https://ilias.studium.kit.edu/ilias.php?baseClass=ilRepositoryGUI") > -1) | (window.location.href.indexOf("https://ilias.studium.kit.edu/ilias.php?baseClass=ilrepositorygui") > -1)) {
   console.log("URL detected");
   window.location.replace("https://ilias.studium.kit.edu/login.php?target=&client_id=produktiv&cmd=force_login&lang=de");
 }

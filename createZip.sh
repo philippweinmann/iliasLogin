@@ -1,1 +1,1 @@
-zip -r iliasLogin.zip icons/ *.json *.js
+zip -0 -r iliasLogin.zip icons/ *.json *.js

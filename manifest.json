@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "iliasLogin",
-  "version": "2.0",
+  "version": "2.1",
   "description": "Clicks through the ilias login pages automatically",
   "icons": {
     "48": "icons/48pxIliasLogo.png"
