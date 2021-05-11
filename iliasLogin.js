@@ -17,7 +17,7 @@ if (window.location.href.indexOf("ilias.studium.kit.edu/login") > -1) {
   clickButtonById('sbmt'); // the actual button
 } else if (detectMoreComplexUrl()) {
   console.log("URL detected");
-  window.location.replace("https://ilias.studium.kit.edu/login.php?target=&client_id=produktiv&cmd=force_login&lang=de");
+  clickListElement("ilTopBarNav", 10)
 }
 
 function detectMoreComplexUrl() {
@@ -29,7 +29,7 @@ function detectMoreComplexUrl() {
 
   // return true for any other URL which links to Magazin but is not a forum URL. If you are already logged in, the login Button is not there so it won't fire
   if (window.location.href.toLowerCase().indexOf("https://ilias.studium.kit.edu/ilias.php?baseclass=ilrepositorygui") > -1) {
-    console.log("Forum Link detected, IliasLogin not executing because you should already be logged in.")
+    console.log("Magazin URL detected, Extensions firering")
     return true
   }
 }
@@ -44,4 +44,14 @@ function clickButtonByClass(className, index = 0) {
   console.log("button about to be clicked: " + shibButton);
   shibButton.click();
   console.log("button clicked");
+}
+
+function clickListElement(listId, elementNumber) {
+  console.log("ClickListElementFct firing")
+  tagNameListElement = "li"
+  urlElement = "a"
+  var listElement = document.getElementById(listId).getElementsByTagName(tagNameListElement)[elementNumber].getElementsByTagName(urlElement)[0]
+  console.log("listElement URL: " + listElement + " about to be clicked")
+  listElement.click()
+  console.log("listElement URL clicked on")
 }
