@@ -2,22 +2,15 @@
 
 if (window.location.href.indexOf("ilias.studium.kit.edu/login") > -1) {
   console.log("URL detected");
-  clickButtonById('f807');
+  clickButtonById('button_shib_login');
 } else if (window.location.href.indexOf("campus.studium.kit.edu") > -1) {
   console.log("URL detected");
-  setTimeout(function () { clickButtonByClass('shib-login shib-button'); }, 100); //
 } else if (window.location.href.indexOf("idp.scc.kit.edu") > -1) {
-  // Careful, here chrome doesn't load the passwords in properly (Not exactly clear why)
-  // Before clicking on submit, we will use a trick and click on some text beforehand.
+  onUsernamePopulated(function(){clickButtonById('sbmt')}); // the actual button})
 
-  // only text, not an actual button. Index = 1 because with Index = 0 
-  // is a class with a button in it which we do not want to click on
-  clickButtonByClass('text full', 1);
-  
-  clickButtonById('sbmt'); // the actual button
 } else if (detectMoreComplexUrl()) {
   console.log("URL detected");
-  clickListElement("ilTopBarNav", 10)
+  clickELementByAriaLabel('Anmelden')
 }
 
 function detectMoreComplexUrl() {
@@ -46,6 +39,13 @@ function clickButtonByClass(className, index = 0) {
   console.log("button clicked");
 }
 
+function clickELementByAriaLabel(label){
+  element = document.querySelector('[aria-label='+label+']').click()
+  console.log("element about to be clicked: " + shibButton);
+  element.click();
+  console.log("element clicked");
+}
+
 function clickListElement(listId, elementNumber) {
   console.log("ClickListElementFct firing")
   tagNameListElement = "li"
@@ -54,4 +54,13 @@ function clickListElement(listId, elementNumber) {
   console.log("listElement URL: " + listElement + " about to be clicked")
   listElement.click()
   console.log("listElement URL clicked on")
+}
+
+function onUsernamePopulated(thenFunction) {
+  console.log(thenFunction)
+  if(document.getElementById('name').value == '') {
+    window.setTimeout(onUsernamePopulated.bind(null, thenFunction), 100); /* this checks the flag every 100 milliseconds*/
+  } else {
+    thenFunction()
+  }
 }
